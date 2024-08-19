@@ -98,7 +98,7 @@
 
         <div class="field is-grouped">
             <div class="control">
-                <button class="button is-primary" type="submit" id="submit">
+                <button class="button is-primary" type="submit" id="Envoyé">
                     Envoyé
                 </button>
             </div>
@@ -120,23 +120,21 @@
             ">
     </div>
 
-    <script>
+    <!-- <script>
         document.getElementById('form').addEventListener('submit', function(event) {
             const age = document.getElementById('age').value;
             const errorElement = document.getElementById('error');
             const ageMinimum = 18;
             const ageMaximum = 30;
 
-        
             errorElement.textContent = '';
 
-        
             if (age < ageMinimum || age > ageMaximum) {
                 event.preventDefault(); // Empêche l'envoi du formulaire
                 errorElement.textContent = 'Vous devez avoir entre ' + ageMinimum + ' et ' + ageMaximum + ' ans pour soumettre ce formulaire.';
             }
         });
-    </script>
+    </script> -->
     
     <script src="app.js"></script> <!-- Chargement du script JavaScript -->
 </body>
