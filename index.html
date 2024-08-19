@@ -1,116 +1,144 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
-    <title>Document</title>
+    
+    <title>Formulaire d'inscription</title>
 </head>
 
 <body>
-    <section class="hero is-primary is-bold">
+    <section class="hero is-bold has-background-danger p-4 has-text-centered">
         <div class="hero-body">
             <div class="container">
-                <h1 class="title">Data Entry Form</h1>
+                <h1 class="title">Confirmation d'inscription</h1>
             </div>
         </div>
     </section>
+
     <form id="form" class="container m-4 pl-4" method="POST">
-        <div class="field">
-            <label class="label">Client Name</label>
+        <div class="field ">
+            <label class="label">Noms</label>
             <div class="control">
-                <input class="input" type="text" placeholder="Your Client Name" name="Client Name" />
+                <input class="input" type="text" placeholder="Noms" name="Noms" />
             </div>
         </div>
 
         <div class="field">
-            <label class="label">Last Name</label>
+            <label class="label">Prenoms</label>
             <div class="control">
-                <input class="input" type="text" placeholder="Your Last Name" name="Last Name" />
+                <input class="input" type="text" placeholder="Prenoms" name="Prenoms" />
             </div>
         </div>
 
         <div class="field">
-            <label class="label">Bonjour</label>
+            <label class="label">Entrez votre âge :</label>
             <div class="control">
-                <input class="input" type="text" placeholder="Bonjour" name="Bonjour" />
+                <input class="input" type="number" id="age" name="age" required>
             </div>
+            <p id="error" class="help is-danger"></p> <!-- Message d'erreur ici -->
         </div>
+
+        <fieldset class="field has-text-weight-bold">
+            <legend>Sexe</legend>
+            <div class="control">
+                <div class="select has-text-weight-bold">
+                    <select id="Sex" name="Sex" required>
+                        <option value="" disabled selected>Veuillez choisir...</option>
+                        <option value="homme" class="has-text-weight-bold">homme</option>
+                        <option value="femme" class="has-text-weight-bold">femme</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
 
         <div class="field">
             <label class="label">Email</label>
             <div class="control">
-                <input class="input" type="email" placeholder="Your Email" name="Email" />
+                <input class="input" type="email" placeholder="Email" name="Email" />
             </div>
         </div>
 
         <div class="field">
-            <label class="label">Password</label>
+            <label class="label">Numéro de téléphone</label>
             <div class="control">
-                <input class="input" type="password" placeholder="Your Password" name="Password" />
+                <input class="input" type="number" placeholder="Numéro de téléphone" name="Numero de telephone" />
             </div>
         </div>
 
         <div class="field">
-            <label class="label">Date of Birth</label>
-            <div class="control">
-                <input class="input" type="date" placeholder="Your Date of Birth" name="DOB" />
-            </div>
-        </div>
-
-        <div class="field">
-            <label class="label">Gender</label>
+            <label class="label">Acceptez-vous de continuer</label>
             <div class="control">
                 <label class="radio">
-                    <input type="radio" name="Gender" value="male" /> Male
+                    <input type="radio" name="continuer" value="oui" /> oui
                 </label>
                 <label class="radio">
-                    <input type="radio" name="Gender" value="female" /> Female
+                    <input type="radio" name="continuer" value="non" /> non
                 </label>
             </div>
         </div>
 
         <div class="field">
-            <label class="label">Agree to Terms</label>
+            <label class="label">Acceptez nos conditions de participation</label>
             <div class="control">
                 <label class="checkbox">
-                    <input type="checkbox" name="Agree To Terms" value="yes" /> I agree
-                    to the terms and conditions
+                    <input type="checkbox" name="conditions de participation" value="yes" /> Oui j'Accepte
                 </label>
             </div>
         </div>
 
         <div class="field">
-            <label class="label">Additional Information</label>
+            <label class="label">Laissez-nous un message</label>
             <div class="control">
-                <textarea class="textarea" placeholder="Any additional information" name="Notes"></textarea>
+                <textarea class="textarea" placeholder="Messages" name="Messages"></textarea>
             </div>
         </div>
 
         <div class="field is-grouped">
             <div class="control">
                 <button class="button is-primary" type="submit" id="submit-button">
-                    Sign Up
+                    Envoyé
                 </button>
             </div>
             <div class="control">
-                <button class="button is-danger">Cancel</button>
+                <button class="button is-danger" type="button">Annulé</button>
             </div>
         </div>
     </form>
+
     <div id="message" style="
         display: none;
         margin: 20px;
         font-weight: bold;
-        color: green;
+        color: rgb(190, 15, 15);
         padding: 8px;
         background-color: beige;
         border-radius: 4px;
-        border-color: aquamarine;
-            "></div>
+        border-color: rgb(255, 6, 6);
+            ">
+    </div>
 
-    <script src="app.js"></script>
+    <script>
+        document.getElementById('form').addEventListener('submit', function(event) {
+            const age = document.getElementById('age').value;
+            const errorElement = document.getElementById('error');
+            const ageMinimum = 18;
+            const ageMaximum = 30;
+
+        
+            errorElement.textContent = '';
+
+        
+            if (age < ageMinimum || age > ageMaximum) {
+                event.preventDefault(); // Empêche l'envoi du formulaire
+                errorElement.textContent = 'Vous devez avoir entre ' + ageMinimum + ' et ' + ageMaximum + ' ans pour soumettre ce formulaire.';
+            }
+        });
+    </script>
+    
+    <script src="app.js"></script> <!-- Chargement du script JavaScript -->
 </body>
 
 </html>
