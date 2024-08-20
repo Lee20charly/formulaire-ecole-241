@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
-    
     <title>Formulaire d'inscription</title>
 </head>
 
@@ -18,7 +17,7 @@
         </div>
     </section>
 
-    <form id="form" class="container m-4 pl-4" method="POST">
+    <form id="form" class="container m-4 pl-4" method="POST" name="contact-form">
         <div class="field ">
             <label class="label">Noms</label>
             <div class="control">
@@ -30,6 +29,13 @@
             <label class="label">Prenoms</label>
             <div class="control">
                 <input class="input" type="text" placeholder="Prenoms" name="Prenoms" />
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Date de naissance</label>
+            <div class="control">
+                <input class="input" type="date" placeholder="Date de naissance" name="Date de naissance" />
             </div>
         </div>
 
@@ -120,7 +126,7 @@
             ">
     </div>
 
-    <!-- <script>
+    <script>
         document.getElementById('form').addEventListener('submit', function(event) {
             const age = document.getElementById('age').value;
             const errorElement = document.getElementById('error');
@@ -134,7 +140,7 @@
                 errorElement.textContent = 'Vous devez avoir entre ' + ageMinimum + ' et ' + ageMaximum + ' ans pour soumettre ce formulaire.';
             }
         });
-    </script> -->
+    </script>
     
     <script src="app.js"></script> <!-- Chargement du script JavaScript -->
 </body>
